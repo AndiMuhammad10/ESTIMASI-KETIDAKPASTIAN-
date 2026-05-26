@@ -167,6 +167,242 @@ st.set_page_config(
     layout="wide"
 )
 
+# ── CUSTOM CSS THEME ───────────────────────────────────────────────
+st.markdown("""
+<style>
+/* === FONT IMPORT === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* === GLOBAL BACKGROUND === */
+.stApp {
+    background: linear-gradient(135deg, #0f0520 0%, #1a0a3d 25%, #2d1060 50%, #1a0a3d 75%, #0f0520 100%);
+    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+}
+
+/* === MAIN CONTENT AREA === */
+.main .block-container {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    border: 1px solid rgba(180, 120, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem 2.5rem;
+    margin-top: 1rem;
+}
+
+/* === SIDEBAR === */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #1a0a3d 0%, #0f0520 100%) !important;
+    border-right: 1px solid rgba(180, 120, 255, 0.2) !important;
+}
+section[data-testid="stSidebar"] * {
+    color: #d4b8ff !important;
+}
+section[data-testid="stSidebar"] .stSelectbox label,
+section[data-testid="stSidebar"] .stCheckbox label,
+section[data-testid="stSidebar"] .stNumberInput label {
+    color: #c9a8ff !important;
+    font-weight: 500 !important;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3 {
+    color: #e8d5ff !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+}
+h1 { font-size: 2rem !important; }
+h2 { font-size: 1.4rem !important; }
+h3 { font-size: 1.1rem !important; }
+
+p, li, span, label, div {
+    color: #c9b8e8 !important;
+}
+
+.stCaption, caption {
+    color: #9b80cc !important;
+}
+
+/* === TABS === */
+.stTabs [data-baseweb="tab-list"] {
+    background: rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+    border: 1px solid rgba(180,120,255,0.2) !important;
+}
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    color: #a890cc !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    padding: 8px 20px !important;
+    border: none !important;
+}
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* === INPUT FIELDS === */
+.stTextInput input, .stNumberInput input {
+    background: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(180,120,255,0.3) !important;
+    border-radius: 8px !important;
+    color: #e8d5ff !important;
+    font-family: 'Inter', sans-serif !important;
+}
+.stTextInput input:focus, .stNumberInput input:focus {
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25) !important;
+}
+
+/* === SELECT BOX === */
+.stSelectbox > div > div {
+    background: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(180,120,255,0.3) !important;
+    border-radius: 8px !important;
+    color: #e8d5ff !important;
+}
+
+/* === BUTTONS === */
+.stButton > button {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    font-family: 'Inter', sans-serif !important;
+    padding: 0.5rem 1.5rem !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+    transition: all 0.2s ease !important;
+}
+.stButton > button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.55) !important;
+}
+
+/* === METRIC CARDS === */
+[data-testid="stMetric"] {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(180,120,255,0.25) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    backdrop-filter: blur(8px) !important;
+}
+[data-testid="stMetricLabel"] {
+    color: #a890cc !important;
+    font-size: 13px !important;
+}
+[data-testid="stMetricValue"] {
+    color: #e8d5ff !important;
+    font-weight: 700 !important;
+}
+[data-testid="stMetricDelta"] {
+    color: #c4a0ff !important;
+}
+
+/* === DATAFRAME / TABLE === */
+.stDataFrame {
+    border: 1px solid rgba(180,120,255,0.2) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+.stDataFrame thead th {
+    background: rgba(124, 58, 237, 0.3) !important;
+    color: #e8d5ff !important;
+    font-weight: 600 !important;
+}
+.stDataFrame tbody tr {
+    background: rgba(255,255,255,0.02) !important;
+}
+.stDataFrame tbody tr:hover {
+    background: rgba(168,85,247,0.1) !important;
+}
+.stDataFrame td {
+    color: #c9b8e8 !important;
+}
+
+/* === EXPANDER === */
+.streamlit-expanderHeader {
+    background: rgba(124,58,237,0.15) !important;
+    border: 1px solid rgba(180,120,255,0.25) !important;
+    border-radius: 10px !important;
+    color: #d4b8ff !important;
+    font-weight: 500 !important;
+}
+.streamlit-expanderHeader:hover {
+    background: rgba(124,58,237,0.25) !important;
+}
+.streamlit-expanderContent {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(180,120,255,0.15) !important;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px !important;
+}
+
+/* === INFO / SUCCESS / WARNING BOXES === */
+.stAlert[data-baseweb="notification"] {
+    border-radius: 10px !important;
+    border: 1px solid rgba(180,120,255,0.3) !important;
+}
+div[data-testid="stNotification"] {
+    background: rgba(124,58,237,0.15) !important;
+    border-left: 4px solid #a855f7 !important;
+    border-radius: 8px !important;
+    color: #e8d5ff !important;
+}
+.stSuccess {
+    background: rgba(34,197,94,0.1) !important;
+    border-left: 4px solid #22c55e !important;
+    border-radius: 8px !important;
+    color: #bbf7d0 !important;
+}
+.stInfo {
+    background: rgba(124,58,237,0.12) !important;
+    border-left: 4px solid #a855f7 !important;
+    color: #d4b8ff !important;
+}
+.stWarning {
+    background: rgba(234,179,8,0.1) !important;
+    border-left: 4px solid #eab308 !important;
+    color: #fef08a !important;
+}
+
+/* === DIVIDER === */
+hr {
+    border-color: rgba(180,120,255,0.2) !important;
+}
+
+/* === CODE BLOCK === */
+code, pre {
+    background: rgba(0,0,0,0.3) !important;
+    border: 1px solid rgba(180,120,255,0.2) !important;
+    border-radius: 6px !important;
+    color: #c4a0ff !important;
+}
+
+/* === LATEX === */
+.katex { color: #e8d5ff !important; }
+
+/* === CHECKBOX === */
+.stCheckbox label { color: #c9b8e8 !important; }
+.stCheckbox [data-baseweb="checkbox"] {
+    accent-color: #a855f7 !important;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+::-webkit-scrollbar-thumb {
+    background: rgba(168,85,247,0.4);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(168,85,247,0.7); }
+</style>
+""", unsafe_allow_html=True)
+
 st.title("⚗️ Estimasi Ketidakpastian Titrimetri")
 st.caption("Kalkulasi µ komponen dan ketidakpastian gabungan U₉₅ secara otomatis")
 
